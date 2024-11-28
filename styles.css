@@ -1,4 +1,7 @@
-/* General styles */
+* {
+    box-sizing: border-box;
+}
+
 body {
     margin: 0;
     padding: 0;
@@ -61,17 +64,21 @@ body {
 }
 
 .column {
-    width: 10%;
+    padding: 2px;
+    max-width: 10%;
+    height: 100%;
     background-color: black;
     color: white;
-    padding: auto;
-    gap: auto;
+    position: relative; /* Establish a context for absolute positioning */
 }
 
 .column-time {
-    margin-inline: auto;
+    width: 100%;
     margin-top: auto;
+    text-align: center;
+    margin-inline: auto;
 }
+
 
 .destination {
     flex: 1;

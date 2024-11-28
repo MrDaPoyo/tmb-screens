@@ -16,22 +16,10 @@ function animateColumnTime() {
   
     // Function to update the displayed time with animation
     function updateTime() {
-      // Add fade-out effect
-      columnTime.classList.add('fade-out');
-  
       // Wait for the fade-out effect to complete
       setTimeout(() => {
         // Update the time
         columnTime.textContent = getVisitorTime();
-  
-        // Add fade-in effect
-        columnTime.classList.remove('fade-out');
-        columnTime.classList.add('fade-in');
-  
-        // Remove fade-in class after the animation
-        setTimeout(() => {
-          columnTime.classList.remove('fade-in');
-        }, 500); // Match fade-in duration
       }, 500); // Match fade-out duration
     }
   
