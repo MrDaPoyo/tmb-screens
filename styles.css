@@ -51,12 +51,14 @@ body {
     height: 100%;
     background-color: black;
     color: white;
-    position: relative; /* Establish a context for absolute positioning */
+    position: relative;
+    /* Establish a context for absolute positioning */
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
 }
+
 .column-logo {
     width: 50px;
     height: 50px;
@@ -128,4 +130,25 @@ body {
     font-size: 4rem;
     font-weight: bold;
     color: #000;
+}
+
+@keyframes incoming {
+    0% {
+        transform: translateX(100%);
+        /* Start from the right */
+        opacity: 0;
+        /* Start invisible */
+    }
+
+    100% {
+        transform: translateX(0);
+        /* Move to the center */
+        opacity: 1;
+        /* Fade in */
+    }
+}
+
+.incoming {
+    animation: incoming 1s forwards;
+    /* Move and fade in over 1 second */
 }

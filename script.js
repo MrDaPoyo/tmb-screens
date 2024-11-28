@@ -1,24 +1,43 @@
-// Example: Timetable updates dynamically in the future
-const times = [
-    { line: "1", time: "01:21", arrival: "4 min" },
-    { line: "2", time: "01:25", arrival: "8 min" },
-];
-
-function updateScreen() {
-    const arrivalDiv = document.querySelector('.arrival');
-    const remainingTimeDiv = document.querySelector('.remaining-time');
-
-    const nextTrain = times[0];
-    const nextNextTrain = times[1];
-
-    // Update first train
-    arrivalDiv.querySelector('.line-number').innerText = nextTrain.line;
-    arrivalDiv.querySelector('.time').innerText = nextTrain.time;
-
-    // Update second train
-    remainingTimeDiv.querySelector('.line-number').innerText = nextNextTrain.line;
-    remainingTimeDiv.querySelector('.time').innerText = nextNextTrain.arrival;
-}
-
-// Simulate updates (if you want a live system, hook it to real-time APIs)
-document.addEventListener('DOMContentLoaded', updateScreen);
+// Function to handle the countdown timer and INCOMING animation
+function startTimers() {
+    const arrivals = [
+      { element: document.querySelector('.arrival .time'), time: 1 }, // 1:21 in seconds
+      { element: document.querySelector('.remaining-time .time'), time: 240 } // 4:00 in seconds
+    ];
+  
+    // Function to format time as MM:SS
+    function formatTime(seconds) {
+      const minutes = Math.floor(seconds / 60).toString().padStart(2, '0');
+      const secs = (seconds % 60).toString().padStart(2, '0');
+      return `${minutes}:${secs}`;
+    }
+  
+    // Function to update each timer
+    function updateTimer() {
+      arrivals.forEach((arrival) => {
+        if (arrival.time > 0) {
+          arrival.time--;
+  
+          // Update the displayed time
+          arrival.element.textContent = formatTime(arrival.time);
+  
+          // Trigger INCOMING animation at 0:10
+          if (arrival.time === 10 && !arrival.element.classList.contains('incoming')) {
+            arrival.element.classList.add('incoming'); // Start incoming animation
+            
+            // After the animation ends, remove the class to stop it
+            arrival.element.addEventListener('animationend', () => {
+              arrival.element.classList.remove('incoming');
+            });
+          }
+        }
+      });
+    }
+  
+    // Run the update every second
+    setInterval(updateTimer, 1000);
+  }
+  
+  // Run the timer on page load
+  document.addEventListener('DOMContentLoaded', startTimers);
+  
