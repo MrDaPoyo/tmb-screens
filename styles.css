@@ -45,7 +45,19 @@ body {
     border-bottom: 5px solid #ccc;
 }
 
-.logo {
+.column {
+    padding: 10px;
+    max-width: 10%;
+    height: 100%;
+    background-color: black;
+    color: white;
+    position: relative; /* Establish a context for absolute positioning */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+.column-logo {
     width: 50px;
     height: 50px;
     background: #ff0000;
@@ -53,23 +65,14 @@ body {
     justify-content: center;
     align-items: center;
     border-radius: 5px;
-    margin-right: 10px;
+    margin-inline: auto;
 }
 
-.logo .icon {
+.column-logo .column-icon {
     width: 30px;
     height: 30px;
     background: #fff;
     border-radius: 50%;
-}
-
-.column {
-    padding: 2px;
-    max-width: 10%;
-    height: 100%;
-    background-color: black;
-    color: white;
-    position: relative; /* Establish a context for absolute positioning */
 }
 
 .column-time {
@@ -79,6 +82,9 @@ body {
     margin-inline: auto;
 }
 
+.column-time * {
+    margin: 0;
+}
 
 .destination {
     flex: 1;
