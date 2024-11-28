@@ -1,7 +1,7 @@
 // Function to handle the countdown timer and INCOMING animation
 function startTimers() {
     const arrivals = [
-      { element: document.querySelector('.arrival .time'), time: 1 }, // 1:21 in seconds
+      { element: document.querySelector('.arrival .time'), time: 81 }, // 1:21 in seconds
       { element: document.querySelector('.remaining-time .time'), time: 240 } // 4:00 in seconds
     ];
   
